@@ -53,7 +53,6 @@ echo "
 # Variables
 MON_SERVER=Your_ip
 JUMPBOX=Your_ip
-VPN=Your_ip
 IP_OFFICE=Your_ip
 
 # Disable UFW if it is enabled
@@ -97,7 +96,6 @@ sudo iptables -A WHITELIST -s $MON_SERVER -p tcp --dport 9080 -m comment --comme
 sudo iptables -A WHITELIST -s $MON_SERVER -p tcp --dport 3100 -m comment --comment "Monitoring Loki server" -j ACCEPT
 sudo iptables -A WHITELIST -s $MON_SERVER -p tcp --dport 10050 -m comment --comment "Monitoring Zabbix server" -j ACCEPT
 sudo iptables -A WHITELIST -s $JUMPBOX -p tcp --dport 22 -m comment --comment "IP Jumpbox SSH" -j ACCEPT
-sudo iptables -A WHITELIST -s $VPN -p tcp --dport 2053 -m comment --comment "IP VPN Pritunl in web 3x-ui" -j ACCEPT
 
 # Apply WHITELIST chain to INPUT
 sudo iptables -A INPUT -j WHITELIST
